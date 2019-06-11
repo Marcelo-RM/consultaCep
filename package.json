@@ -1,0 +1,27 @@
+{
+  "name": "init-jquery",
+  "version": "1.0.0",
+  "description": "Introduçao ao JQuery e Ajax",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcelo-RM/init-jQuery.git"
+  },
+  "keywords": [
+    "jquery",
+    "ajax",
+    "iniciando"
+  ],
+  "author": "Marcelo Montalvao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcelo-RM/init-jQuery/issues"
+  },
+  "homepage": "https://github.com/Marcelo-RM/init-jQuery#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
