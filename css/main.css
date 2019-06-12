@@ -1,0 +1,29 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+#title {
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+    font: larger;
+    font-size: 26px;
+    margin: 0;
+    padding: 10px;
+}
+#place {
+    margin: 10px auto;
+    border: 1px solid green;
+    width: 50%;
+    padding: 20px;
+    background-color: gainsboro;
+}
+#button {
+    margin: 10px;
+    border: 0;
+    background-color: darkblue;
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+}
