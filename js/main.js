@@ -1,5 +1,6 @@
 function consultaCep(){
-    var cep = $("#inputCep")[0].value,
+    var value = $("#inputCep")[0].value,
+        cep = value.replace(/\D+/g, ""),
         url = "https://viacep.com.br/ws/" + cep + "/json/";
     $.ajax({
         url: url,
@@ -7,11 +8,14 @@ function consultaCep(){
         success: function(response){
             if(response.erro && response.erro === true){
                 alert("Cep inválido");
-            }else{
-                $("#logradouro").html("Logradouro: " + response.logradouro);
-                $("#bairro").html("Bairro: " + response.bairro);
-                $("#localidade").html("Localidade: " +response.localidade);
-                $("#uf").html("UF: " + response.uf);
+            }else{debugger;
+                var arr = ["logradouro", "bairro", "localidade", "uf", "complemento", "gia", "ibge", "unidade"];
+                for(var i = 0; i < arr.length; i++){
+                    var value = arr[i];
+                    if(response[value]){
+                        $("#" + value).html(value.toLocaleUpperCase() + ": " + response[value]);
+                    }
+                }
             }
         },
         error: function(xhr, oError, message){
