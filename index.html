@@ -16,7 +16,7 @@
     <p id="title"><b>Consultar CEP</b></p><br>
 
     <div id="place">
-        <input id="inputCep" type="text"><br>
+        <input id="inputCep" OnKeyPress="formatar('??.???-???', this)" type="text"><br>
         <button id="button" type="button" onclick="consultaCep()">Consultar</button>
         <p id="logradouro"></p>
         <p id="bairro"></p>
