@@ -12,6 +12,7 @@ function consultaCep() {
                 var arr = ["logradouro", "bairro", "localidade", "uf", "complemento", "gia", "ibge", "unidade"];
                 for (var i = 0; i < arr.length; i++) {
                     var value = arr[i];
+                    $("#" + value).html("");
                     if (response[value]) {
                         $("#" + value).html(value.toLocaleUpperCase() + ": " + response[value]);
                     }
