@@ -1,27 +1,35 @@
 function consultaCep() {
     var value = $("#inputCep")[0].value,
         cep = value.replace(/\D+/g, ""),
-        url = "https://viacep.com.br/ws/" + cep + "/json/";
+        url = "https://viacep.com.br/ws/" + cep + "/json/",
+        arr = ["logradouro", "bairro", "localidade", "uf", "complemento", "gia", "ibge", "unidade"];
+        
     $.ajax({
         url: url,
         type: "GET",
-        success: function (response) {
+        success: response => {
             if (response.erro && response.erro === true) {
+            	for (var i = 0; i < arr.length; i++) {
+                    var place = arr[i];
+                    clearValue(place);
+                }
                 alert("Cep inválido");
             } else {
-                var arr = ["logradouro", "bairro", "localidade", "uf", "complemento", "gia", "ibge", "unidade"];
-                for (var i = 0; i < arr.length; i++) {
-                    var value = arr[i];
-                    $("#" + value).html("");
-                    if (response[value]) {
-                        $("#" + value).html(value.toLocaleUpperCase() + ": " + response[value]);
+                for (i = 0; i < arr.length; i++) {
+                    place = arr[i];
+                    clearValue(place);
+                    if (response[place]) {
+                    	setValue(place, response[place]);
                     }
                 }
             }
         },
-        error: function (xhr, oError, message) {
-            alert("Desculpe ocorreu um erro desconhecido, confira seus dados e \
-            tente novamente!");
+        error: (xhr, oError, message) => {
+        	for (i = 0; i < arr.length; i++) {
+                    place = arr[i];
+                    clearValue(place);
+            }
+            alert("Desculpe ocorreu um erro desconhecido, confira seus dados e tente novamente!");
         }
     });
 }
@@ -29,10 +37,18 @@ function consultaCep() {
 function formatar(mascara, element) {
     var i = element.value.length;
     var saida = mascara.substring(0, 1);
-    var texto = mascara.substring(i)
+    var texto = mascara.substring(i);
 
-    if (texto.substring(0, 1) != saida) {
+    if (texto.substring(0, 1) !== saida) {
         element.value += texto.substring(0, 1);
     }
 
+}
+
+function clearValue(place){
+	$("#" + place).html("");
+}
+
+function setValue(place, value){
+	$("#" + place).html(place.toLocaleUpperCase() + ": " + value);
 }
